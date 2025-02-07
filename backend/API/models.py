@@ -6,9 +6,10 @@ class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     avatar = models.ImageField(upload_to='avatars/', null=True, blank=True)
     name = models.CharField(max_length=100)
-    completed_quests = models.IntegerField(default=0)
     average_rating = models.FloatField(default=0)
     quest_history = models.TextField(null=True, blank=True)  # Can store quest IDs or history as a JSON string
+    created_quests = models.ManyToManyField('Quest', related_name='creators', blank=True)
+    completed_quests = models.ManyToManyField('Quest', related_name='completers', blank=True)
 
     def __str__(self):
         return self.name
@@ -17,7 +18,7 @@ class Quest(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='quests')
     title = models.CharField(max_length=200)
     description = models.TextField()
-    num_tasks = models.IntegerField()
+    count_tasks = models.IntegerField()
     time_limit = models.IntegerField()  # in minutes
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
