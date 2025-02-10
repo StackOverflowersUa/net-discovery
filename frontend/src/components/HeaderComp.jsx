@@ -1,5 +1,9 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { Link } from "react-router-dom";
+
+<Link to="/about">About</Link>
+
 
 function HeaderComp() {
   return (
@@ -15,9 +19,9 @@ function HeaderComp() {
             Options
           </button>
           <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            <li><a className="dropdown-item" href="#">Action</a></li>
-            <li><a className="dropdown-item" href="#">Another action</a></li>
-            <li><a className="dropdown-item" href="#">Something else here</a></li>
+            <li><Link className="dropdown-item" to="/">Action</Link></li>
+            <li><Link className="dropdown-item" to="/">Another action</Link></li>
+            <li><Link className="dropdown-item" to="/">Something else here</Link></li>
           </ul>
         </div>
       </div>

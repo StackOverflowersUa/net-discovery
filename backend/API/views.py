@@ -14,7 +14,7 @@ from .serializers import (
 class ProfileViewSet(viewsets.ModelViewSet):
     queryset = Profile.objects.all()
     serializer_class = ProfileSerializer
-    permission_classes = [permissions.IsAuthenticated]  # Only authenticated users can access profile data
+    """ permission_classes = [permissions.IsAuthenticated]  # Only authenticated users can access profile data """
 
     def perform_create(self, serializer):
         # Create profile after user registration (auto-create profile for new users)
@@ -24,7 +24,7 @@ class ProfileViewSet(viewsets.ModelViewSet):
 class QuestViewSet(viewsets.ModelViewSet):
     queryset = Quest.objects.all()
     serializer_class = QuestSerializer
-    permission_classes = [permissions.IsAuthenticated]
+    """ permission_classes = [permissions.IsAuthenticated] """
 
     def perform_create(self, serializer):
         # Associate the logged-in user as the author of the quest
@@ -34,7 +34,7 @@ class QuestViewSet(viewsets.ModelViewSet):
 class QuestTaskViewSet(viewsets.ModelViewSet):
     queryset = QuestTask.objects.all()
     serializer_class = QuestTaskSerializer
-    permission_classes = [permissions.IsAuthenticated]
+    """ permission_classes = [permissions.IsAuthenticated] """
 
     def perform_create(self, serializer):
         # Associate the task with the corresponding quest
@@ -45,7 +45,7 @@ class QuestTaskViewSet(viewsets.ModelViewSet):
 class QuestProgressViewSet(viewsets.ModelViewSet):
     queryset = QuestProgress.objects.all()
     serializer_class = QuestProgressSerializer
-    permission_classes = [permissions.IsAuthenticated]
+    """ permission_classes = [permissions.IsAuthenticated] """
 
     def perform_create(self, serializer):
         user = self.request.user
@@ -56,7 +56,7 @@ class QuestProgressViewSet(viewsets.ModelViewSet):
 class QuestRatingViewSet(viewsets.ModelViewSet):
     queryset = QuestRating.objects.all()
     serializer_class = QuestRatingSerializer
-    permission_classes = [permissions.IsAuthenticated]
+    """ permission_classes = [permissions.IsAuthenticated] """
 
     def perform_create(self, serializer):
         user = self.request.user
@@ -67,7 +67,7 @@ class QuestRatingViewSet(viewsets.ModelViewSet):
 class LeaderboardViewSet(viewsets.ModelViewSet):
     queryset = Leaderboard.objects.all()
     serializer_class = LeaderboardSerializer
-    permission_classes = [permissions.IsAuthenticated]
+    """ permission_classes = [permissions.IsAuthenticated] """
 
     def perform_create(self, serializer):
         user = self.request.user
@@ -77,7 +77,7 @@ class LeaderboardViewSet(viewsets.ModelViewSet):
 class QuestMediaViewSet(viewsets.ModelViewSet):
     queryset = QuestMedia.objects.all()
     serializer_class = QuestMediaSerializer
-    permission_classes = [permissions.IsAuthenticated]
+    """ permission_classes = [permissions.IsAuthenticated] """
 
     def perform_create(self, serializer):
         quest_id = self.request.data.get('quest')
@@ -87,7 +87,7 @@ class QuestMediaViewSet(viewsets.ModelViewSet):
 class TaskOptionViewSet(viewsets.ModelViewSet):
     queryset = TaskOption.objects.all()
     serializer_class = TaskOptionSerializer
-    permission_classes = [permissions.IsAuthenticated]
+    """ permission_classes = [permissions.IsAuthenticated] """
 
     def perform_create(self, serializer):
         task_id = self.request.data.get('task')

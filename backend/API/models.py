@@ -82,9 +82,10 @@ class QuestMedia(models.Model):
         return f"Media for {self.quest.title}"
 
 class TaskOption(models.Model):
-    task = models.ForeignKey(QuestTask, on_delete=models.CASCADE, related_name='options')
+    task = models.ForeignKey(QuestTask, on_delete=models.CASCADE, related_name='task_options')
     option_text = models.TextField()
     is_correct = models.BooleanField(default=False)
 
     def __str__(self):
         return f"Option for Task {self.task.task_number} in Quest {self.task.quest.title}"
+
