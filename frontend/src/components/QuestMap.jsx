@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import QuestMapMarker from "./QuestMapMarker";
+import QuestMapTask from "./QuestMapTask";
 
 function QuestMap(props) {
 
@@ -10,7 +10,7 @@ function QuestMap(props) {
             "position": [36, 32],
             "question_text": "2 + 2 =",
             "options": ["1", "2", "3", "4"],
-            "correct_answer": 3
+            "correct_index": 3
         },
         {
             "task_number": 2,
@@ -18,7 +18,7 @@ function QuestMap(props) {
             "position": [79, 55],
             "question_text": "3 * 7 =",
             "options": ["37", "21", "10"],
-            "correct_answer": 1
+            "correct_index": 1
         }
     ]
 
@@ -31,15 +31,14 @@ function QuestMap(props) {
 
             {questTasks.map((item) =>
                 <>
-                    <QuestMapMarker
+                    <QuestMapTask
                         task_number={item.task_number}
                         task_name={item.task_name}
                         position={item.position}
                         question_text={item.question_text}
                         options={item.options}
-                        finished="0"
-                        onTaskClick={(number) => console.log("clicked task number", number)}
-                    />
+                        correct_index={item.correct_index}
+                        status="unfinished"/>
                 </>
             )}
         </div>

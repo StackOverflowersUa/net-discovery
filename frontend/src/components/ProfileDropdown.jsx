@@ -11,7 +11,7 @@ function ProfileDropdown(props) {
                 data-bs-toggle="dropdown"
                 aria-haspopup="true"
                 aria-expanded="false">
-                    <img src={props.avatar ?? "logo192.png"} className="rounded-circle me-2 pfp-small" alt="pfp"></img>
+                    <img src={props.avatar ?? "/logo192.png"} className="rounded-circle me-2 pfp-small" alt="pfp"></img>
                     <span className="me-2">{props.username ?? "Username"}</span>
             </button>
 
