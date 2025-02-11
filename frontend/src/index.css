@@ -1,5 +1,4 @@
 body {
-  margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
@@ -10,4 +9,36 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+.content-container {
+  padding-left:  15rem;
+  padding-right:  15rem;
+}
+
+.header {
+  padding-left:  15rem;
+  padding-right:  15rem;
+}
+
+.pfp-small {
+  width: 2rem;
+  height: 2rem;
+}
+
+.d-flex.search-bar {
+  width: 30rem;
+}
+
+.quest-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+  grid-gap: 2rem;
+  margin-block: 2rem;
+  justify-items: center;
+  align-items: center;
+}
+
+.QuestGrid > * {
+  width: 1fr;
 }

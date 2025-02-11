@@ -9,7 +9,7 @@ function Router(props) {
         element: (
           <StartPage/>
         ),
-      }
+      },
     ]);
 
   return <RouterProvider router={router} />;
