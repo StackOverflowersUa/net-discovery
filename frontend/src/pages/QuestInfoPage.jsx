@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from "react";
-import {useParams} from 'react-router-dom';
+import {useParams, Link} from 'react-router-dom';
 import SearchHeader from "../components/SearchHeader";
 
 
@@ -23,11 +23,29 @@ function QuestInfoPage() {
             <SearchHeader />
 
             <div className="content-container">
-                <div className="media d-flex">
-                    <img className="align-self-start mr-3 quest-image-big" src="../logo512.png" alt="Quest image"/>
-                    <div className="media-body">
+                <div className="d-flex">
+                    <div className="info-left-panel">
+                        <img className="info-image" src="../logo512.png" alt="Quest image"/>
+
+                        <Link
+                            role="button"
+                            className="btn btn-success quest-info-play-btn"
+                            to={`/play/${id}`}>
+                                Play
+                        </Link>
+                    </div>
+
+                    <div>
                         <h5 className="mt-0">{id}</h5>
-                        <p>{id}</p>
+
+                        <div className="d-flex quest-info">
+                            <span className="me-5">Rating: * * * * *</span>
+                            <span className="me-5">Time: 20 min</span>
+                            <span>Tasks: 4</span>
+                        </div>
+
+                        <p>description jsl;;sadfjsdkaf jaskldfhslf dhsajkf hasd dhskfla hfdkhjlasfdns fkajlh hlskj
+                            hdfkalsn dslkhf dsa fhkaslf asf s jasfdhk alsdh klsd</p>
                     </div>
                 </div>
             </div>

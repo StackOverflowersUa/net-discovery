@@ -16,8 +16,8 @@ function ProfilePanel(props) {
             </button>
 
             <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <li><Link className="dropdown-item" href={`profile/${props.id}`}>Profile</Link></li>
-                <li><Link className="dropdown-item" href="#">Log out</Link></li>
+                <li><Link className="dropdown-item" to={`/profile/${props.id}`}>Profile</Link></li>
+                <li><Link className="dropdown-item" to="#">Log out</Link></li>
             </ul>
         </div>
     )

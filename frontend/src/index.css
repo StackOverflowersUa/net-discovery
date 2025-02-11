@@ -11,13 +11,13 @@ code {
     monospace;
 }
 
-.content-container {
-  padding-top: 2rem;
+.header {
   padding-left:  15rem;
   padding-right:  15rem;
 }
 
-.header {
+.content-container {
+  padding-top: 2rem;
   padding-left:  15rem;
   padding-right:  15rem;
 }
@@ -27,13 +27,48 @@ code {
   height: 2rem;
 }
 
-.quest-image-big {
-  width: 20rem;
-  height: 20rem;
-}
-
 .d-flex.search-bar {
   width: 30rem;
+}
+
+.quest-map {
+  width: 1fr;
+}
+
+.play-quest-left-panel {
+  width: 30rem;
+  margin-right: 2rem;
+  position: relative;
+}
+
+.play-quest-finish-btn {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.info-left-panel {
+  width: 20rem;
+  margin-right: 2rem;
+}
+
+.info-image {
+  width: 100%;
+  padding-bottom: 1rem;
+}
+
+.quest-info-play-btn {
+  width: 100%;
+}
+
+.progress {
+  margin-top: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.d-flex.quest-info {
+  margin: 1rem 0;
 }
 
 .quest-grid {
@@ -43,8 +78,4 @@ code {
   margin-block: 2rem;
   justify-items: center;
   align-items: center;
-}
-
-.QuestGrid > * {
-  width: 1fr;
 }
