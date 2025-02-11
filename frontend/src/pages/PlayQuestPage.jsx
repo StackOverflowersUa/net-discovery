@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from "react";
 import {useParams} from 'react-router-dom';
 import TitleHeader from "../components/TitleHeader";
+import QuestMap from "../components/QuestMap";
 
 
 function PlayQuestPage() {
@@ -8,7 +9,7 @@ function PlayQuestPage() {
 
     // useEffect(() => {
     //     setIsLoading(true);
-    //     fetch('https://my-json-server.typicode.com/StackOverflowersUa/net-discovery-fake-json/quests')
+    //     fetch('https://my-json-server.typicode.com/StackOverflowersUa/net-discovery-fake-json/quest-tasks')
     //         .then((response) => response.json())
     //         .then((data) => {
     //             console.log(data);
@@ -65,10 +66,9 @@ function PlayQuestPage() {
                                 Finish
                         </button>
                     </div>
-                    <img
-                        className="quest-map"
-                        src="https://2minutetabletop.com/wp-content/uploads/2020/02/Arvyre-Continent-Map-23x16-Base-Map.jpg"
-                        alt="Quest map" />
+                    <QuestMap
+                        image="https://2minutetabletop.com/wp-content/uploads/2020/02/Arvyre-Continent-Map-23x16-Base-Map.jpg"
+                        />
                 </div>
             </div>
         </>

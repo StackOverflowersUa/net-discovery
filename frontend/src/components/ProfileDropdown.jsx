@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-function ProfilePanel(props) {
+function ProfileDropdown(props) {
     return (
         <div className="dropdown ms-3">
             <button
@@ -23,4 +23,4 @@ function ProfilePanel(props) {
     )
 }
 
-export default ProfilePanel;
+export default ProfileDropdown;

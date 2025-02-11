@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from "react";
-import SearchHeader from "../components/SearchHeader";
+import SearchBarHeader from "../components/SearchBarHeader";
 import QuestCard from "../components/QuestCard";
 
 
@@ -21,7 +21,7 @@ function StartPage() {
 
     return (
         <>
-            <SearchHeader />
+            <SearchBarHeader />
 
             <div className="content-container">
                 {isLoading && <>Loading...</>}

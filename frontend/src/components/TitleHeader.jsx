@@ -1,5 +1,5 @@
 import React from "react";
-import ProfilePanel from "./ProfilePanel"
+import ProfileDropdown from "./ProfileDropdown"
 
 function TitleHeader(params) {
     return (
@@ -9,7 +9,7 @@ function TitleHeader(params) {
 
                 <span className="navbar-brand">{params.title}</span>
 
-                <ProfilePanel />
+                <ProfileDropdown />
             </div>
         </nav>
     );

@@ -1,8 +1,8 @@
 import React from "react";
 import SearchBar from "./SearchBar"
-import ProfilePanel from "./ProfilePanel"
+import ProfileDropdown from "./ProfileDropdown"
 
-function SearchHeader() {
+function SearchBarHeader() {
     return (
         <nav className="navbar navbar-expand-lg navbar-dark bg-dark header">
             <div className="container-fluid">
@@ -10,10 +10,10 @@ function SearchHeader() {
 
                 <SearchBar />
 
-                <ProfilePanel />
+                <ProfileDropdown />
             </div>
         </nav>
     );
 }
 
-export default SearchHeader;
+export default SearchBarHeader;

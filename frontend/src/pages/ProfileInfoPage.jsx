@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from "react";
 import {useParams, Link} from 'react-router-dom';
-import SearchHeader from "../components/SearchHeader";
+import SearchBarHeader from "../components/SearchBarHeader";
 import QuestCard from "../components/QuestCard";
 
 
@@ -23,7 +23,7 @@ function ProfileInfoPage() {
 
     return (
         <>
-            <SearchHeader />
+            <SearchBarHeader />
 
             <div className="content-container">
                 <div className="d-flex">
@@ -55,6 +55,9 @@ function ProfileInfoPage() {
                         <br/>
 
                         <h5>Created quests:</h5>
+
+                        {/*TODO: move the following code to the separate component and make it universal*/}
+
                         <div>
                             {isLoading && <>Loading...</>}
                             {!isLoading && !!questList?.length &&

@@ -1,26 +1,14 @@
 import React, {useState, useEffect} from "react";
 import {useParams, Link} from 'react-router-dom';
-import SearchHeader from "../components/SearchHeader";
+import SearchBarHeader from "../components/SearchBarHeader";
 
 
 function QuestInfoPage() {
     const { id } = useParams();
 
-    // useEffect(() => {
-    //     setIsLoading(true);
-    //     fetch('https://my-json-server.typicode.com/StackOverflowersUa/net-discovery-fake-json/quests')
-    //         .then((response) => response.json())
-    //         .then((data) => {
-    //             console.log(data);
-    //             setQuestList(data);
-    //             setIsLoading(false);
-    //         })
-    //         .catch(error => console.error(error));
-    // }, []);
-
     return (
         <>
-            <SearchHeader />
+            <SearchBarHeader />
 
             <div className="content-container">
                 <div className="d-flex">
@@ -41,11 +29,19 @@ function QuestInfoPage() {
                         <div className="d-flex quest-info">
                             <span className="me-5">Rating: * * * * *</span>
                             <span className="me-5">Time: 20 min</span>
-                            <span>Tasks: 4</span>
+                            <span className="me-5">Tasks: 4</span>
+                            <span>Creator: Name</span>
                         </div>
 
                         <p>description jsl;;sadfjsdkaf jaskldfhslf dhsajkf hasd dhskfla hfdkhjlasfdns fkajlh hlskj
                             hdfkalsn dslkhf dsa fhkaslf asf s jasfdhk alsdh klsd</p>
+
+                        <br />
+
+                        <h5>Comments:</h5>
+
+                        {/*TODO: comments section*/}
+
                     </div>
                 </div>
             </div>

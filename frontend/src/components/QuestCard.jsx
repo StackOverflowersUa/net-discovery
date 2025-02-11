@@ -8,7 +8,7 @@ function QuestCard(props) {
             <div className="card-body">
                 <h5 className="card-title">{props.title}</h5>
                 <p className="card-text">{props.description}</p>
-                <Link to={`quest/${props.title}`} className="stretched-link" />
+                <Link to={`/quest/${props.title}`} className="stretched-link" />
             </div>
         </div>
     )

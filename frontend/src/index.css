@@ -35,6 +35,18 @@ code {
   width: 1fr;
 }
 
+.quest-map-marker {
+  text-align: center;
+}
+
+.quest-map-marker-header {
+  background-color: white;
+}
+
+.quest-map-marker-image {
+  width: 4rem;
+}
+
 .play-quest-left-panel {
   width: 30rem;
   margin-right: 2rem;
