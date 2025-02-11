@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from "react";
-import {useParams, Link} from 'react-router-dom';
+import {useParams} from 'react-router-dom';
 import SearchBarHeader from "../components/SearchBarHeader";
 import QuestCard from "../components/QuestCard";
 
@@ -28,7 +28,7 @@ function ProfileInfoPage() {
             <div className="content-container">
                 <div className="d-flex">
                     <div className="info-left-panel">
-                        <img className="info-image" src="../logo512.png" alt="Profile picture"/>
+                        <img className="info-image" src="/logo512.png" alt="Profile picture"/>
                     </div>
 
                     <div>

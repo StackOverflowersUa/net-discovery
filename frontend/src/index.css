@@ -47,6 +47,10 @@ code {
   width: 4rem;
 }
 
+.task-text {
+  white-space: pre-line;
+}
+
 .play-quest-left-panel {
   width: 30rem;
   margin-right: 2rem;

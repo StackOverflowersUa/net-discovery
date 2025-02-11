@@ -62,6 +62,7 @@ function QuestMapTask(props) {
                     className="quest-map-marker-image"
                     src={markerImage}
                     onClick={handleShow}
+                    alt={"Task marker "+props.task_number}
                 />
 
                 <Modal
@@ -76,7 +77,7 @@ function QuestMapTask(props) {
                     </Modal.Header>
 
                     <Modal.Body>
-                        <p>{props.question_text}</p>
+                        <p className="task-text">{props.question_text}</p>
 
                         <Form>
                             {props.options.map((item, index) =>

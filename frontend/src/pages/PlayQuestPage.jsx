@@ -12,7 +12,7 @@ function PlayQuestPage() {
     // TODO: get quest info from server
     const questData = {
         "title": "Medieval Fantasy Quest",
-        "description": "description jsl;;sadfjsdkaf jaskldfhslf dhsajkf hasd dhskfla hfdkhjlasfdns fkajlh hlskj hdfkalsn dslkhf dsa fhkaslf asf s jasfdhk alsdh klsd",
+        "description": "Ви потрапили до світу середньовічного фентезі. Допоможіть місцевим жителям, щоб дізнатися, як знайти мудру людину, що здатна повернути Вас додому.",
         "image": "https://2minutetabletop.com/wp-content/uploads/2020/02/Arvyre-Continent-Map-23x16-Base-Map.jpg",
         "count_tasks": 3,
         "time_limit": 20*60,
@@ -36,27 +36,30 @@ function PlayQuestPage() {
     const questTasks = [
         {
             "task_number": 1,
-            "task_name": "Town",
+            "task_name": "Порт",
             "position": [37, 30],
-            "question_text": "2 + 2 =",
-            "options": ["1", "2", "3", "4"],
+            "question_text": "Злочинець вкрав сумку в перехожого. Спіймайте його, застосувавши це надзвичайне складне заклинання:\n2 + 2 =",
+            "options": ["1", "2", "22", "4"],
             "correct_index": 3
         },
         {
             "task_number": 2,
-            "task_name": "Bridge",
+            "task_name": "Міст",
             "position": [57, 10],
-            "question_text": "Is this quest fun?",
-            "options": ["Yes", "No"],
-            "correct_index": 0
+            "question_text": "Цим мостом не користуються вже багато років: ніхто не може пройти через " +
+                "кам'яне створіння, що тут оселилося. Можливо, воно пропустить Вас, якщо приголомшити його своїми знаннями?\n" +
+                "3 * 7 =",
+            "options": ["37", "21", "10"],
+            "correct_index": 1
         },
         {
             "task_number": 3,
-            "task_name": "City",
+            "task_name": "Фортеця",
             "position": [78, 49],
-            "question_text": "3 * 7 =",
-            "options": ["37", "21", "10"],
-            "correct_index": 1
+            "question_text": "Нарешті мудру людину, що володіє магією повернення додому, знайдено! Проте, " +
+                "чарівник не хоче допомагати аби-кому. Доведіть, що Ви гідні його часу:\n84 + 30 - 460 =",
+            "options": ["-256", "-356", "-346", "-348"],
+            "correct_index": 2
         }
     ]
 

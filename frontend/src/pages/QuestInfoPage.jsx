@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react";
+import React from "react";
 import {useParams, Link} from 'react-router-dom';
 import SearchBarHeader from "../components/SearchBarHeader";
 
@@ -13,7 +13,7 @@ function QuestInfoPage() {
             <div className="content-container">
                 <div className="d-flex">
                     <div className="info-left-panel">
-                        <img className="info-image" src="../logo512.png" alt="Quest image"/>
+                        <img className="info-image" src="/logo512.png" alt="Quest image"/>
 
                         <Link
                             role="button"
