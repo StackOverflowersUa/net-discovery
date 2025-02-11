@@ -3,19 +3,20 @@ import {Button, Modal, Form} from "react-bootstrap";
 
 function QuestMapTask(props) {
     const [show, setShow] = useState(false);
-    const [submitted, setSubmitted] = useState(false);
+    const [submitted, setSubmitted] = useState(props.status !== "unfinished");
     const [selectedIndex, setSelectedIndex] = useState(null);
 
+    // TODO: icons
     const iconUnfinished = "https://cdn-icons-png.flaticon.com/512/5860/5860579.png";
     const iconDone = "https://cdn1.iconfinder.com/data/icons/infinity-symbols-arrows/48/012_002_check_done_tick-512.png";
     const iconFailed = "https://png.pngtree.com/png-vector/20230527/ourmid/pngtree-red-cross-paint-clipart-transparent-background-vector-png-image_7110618.png";
 
-    const [markerImage, setMarkerImage] = useState(getInitialMarkerImage(props.status));
+    const [markerImage, setMarkerImage] = useState(getInitialMarkerImage());
 
-    function getInitialMarkerImage(status) {
-        if (status === "unfinished") {
+    function getInitialMarkerImage() {
+        if (props.status === "unfinished") {
             return iconUnfinished;
-        } else if (status === "done") {
+        } else if (props.status === "done") {
             return iconDone;
         } else {
             return iconFailed;
@@ -26,6 +27,7 @@ function QuestMapTask(props) {
 
     function handleShow() {
         if (submitted) return;
+        setSelectedIndex(null);
         setShow(true);
     }
 
@@ -38,9 +40,13 @@ function QuestMapTask(props) {
             setMarkerImage(iconFailed);
         }
 
+        props.handleSubmit(selectedIndex.toString() == props.correct_index);
+
         setSubmitted(true);
 
         setShow(false);
+
+        // TODO: send request about task completion
     }
 
     return (
@@ -78,7 +84,7 @@ function QuestMapTask(props) {
                                     type="radio"
                                     label={item}
                                     name="radioGroup"
-                                    id={index}
+                                    id={"radio-" + index}
                                     onChange={() => setSelectedIndex(index)}
                                 />
                             )}
