@@ -6,7 +6,7 @@ function SearchHeader() {
     return (
         <nav className="navbar navbar-expand-lg navbar-dark bg-dark header">
             <div className="container-fluid">
-                <a className="navbar-brand" href="#">Net Discovery</a>
+                <a className="navbar-brand" href="/">Net Discovery</a>
 
                 <SearchBar />
 

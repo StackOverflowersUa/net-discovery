@@ -12,6 +12,7 @@ code {
 }
 
 .content-container {
+  padding-top: 2rem;
   padding-left:  15rem;
   padding-right:  15rem;
 }
@@ -24,6 +25,11 @@ code {
 .pfp-small {
   width: 2rem;
   height: 2rem;
+}
+
+.quest-image-big {
+  width: 20rem;
+  height: 20rem;
 }
 
 .d-flex.search-bar {
