@@ -69,8 +69,13 @@ code {
   margin-right: 2rem;
 }
 
+.info-right-panel {
+  width: 100%;
+}
+
 .info-image {
   width: 100%;
+  aspect-ratio: 1 / 1;
   padding-bottom: 1rem;
 }
 
@@ -89,9 +94,14 @@ code {
 
 .quest-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
   grid-gap: 2rem;
   margin-block: 2rem;
   justify-items: center;
   align-items: center;
+}
+
+.card {
+  width: 16rem;
+  height: 28rem;
 }

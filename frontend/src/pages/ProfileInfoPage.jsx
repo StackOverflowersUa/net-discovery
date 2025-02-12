@@ -1,21 +1,22 @@
 import React, {useState, useEffect} from "react";
 import {useParams} from 'react-router-dom';
 import SearchBarHeader from "../components/SearchBarHeader";
-import QuestCard from "../components/QuestCard";
+import CenterSpinner from "../components/CenterSpinner";
+import QuestsGrid from "../components/QuestsGrid";
 
 
 function ProfileInfoPage() {
     const [isLoading, setIsLoading] = useState(false);
-    const [questList, setQuestList] = useState([]);
+    const [profileData, setProfileData] = useState([]);
     const { id } = useParams();
 
     useEffect(() => {
         setIsLoading(true);
-        fetch('https://my-json-server.typicode.com/StackOverflowersUa/net-discovery-fake-json/quests')
+        fetch('https://my-json-server.typicode.com/StackOverflowersUa/net-discovery-fake-json/profiles')
             .then((response) => response.json())
             .then((data) => {
                 console.log(data);
-                setQuestList(data);
+                setProfileData(data);
                 setIsLoading(false);
             })
             .catch(error => console.error(error));
@@ -26,22 +27,23 @@ function ProfileInfoPage() {
             <SearchBarHeader />
 
             <div className="content-container">
+                {isLoading && <CenterSpinner />}
+                {!isLoading &&
                 <div className="d-flex">
                     <div className="info-left-panel">
-                        <img className="info-image" src="/logo512.png" alt="Profile picture"/>
+                        <img className="rounded-circle info-image" src={profileData.avatar ?? "/logo512.png"} alt="Profile picture"/>
                     </div>
 
-                    <div>
-                        <h5 className="mt-0">{id}</h5>
+                    <div className="info-right-panel">
+                        <h5 className="mt-0">{profileData.name}</h5>
 
                         <div className="d-flex quest-info">
-                            <span className="me-5">Rating: * * * * *</span>
-                            <span className="me-5">Quests played: 12</span>
-                            <span>Quests created: 2</span>
+                            <span className="me-5">Rating: {profileData.avarage_rating}</span>
+                            <span className="me-5">Quests played: -</span>
+                            <span>Quests created: -</span>
                         </div>
 
-                        <p>description jsl;;sadfjsdkaf jaskldfhslf dhsajkf hasd dhskfla hfdkhjlasfdns fkajlh hlskj
-                            hdfkalsn dslkhf dsa fhkaslf asf s jasfdhk alsdh klsd</p>
+                        <p>{profileData.description}</p>
 
                         <br/>
 
@@ -56,23 +58,10 @@ function ProfileInfoPage() {
 
                         <h5>Created quests:</h5>
 
-                        {/*TODO: move the following code to the separate component and make it universal*/}
-
-                        <div>
-                            {isLoading && <>Loading...</>}
-                            {!isLoading && !!questList?.length &&
-                                <div className="quest-grid">
-                                    {questList.map((item) =>
-                                        <QuestCard
-                                            title={item.title}
-                                            description={item.description}
-                                            image={item.image} />
-                                    )}
-                                </div>
-                            }
-                        </div>
+                        <QuestsGrid />
                     </div>
                 </div>
+                }
             </div>
         </>
     );

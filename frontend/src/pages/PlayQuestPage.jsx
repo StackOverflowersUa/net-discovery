@@ -2,6 +2,8 @@ import React, {useState, useEffect} from "react";
 import {useParams} from 'react-router-dom';
 import TitleHeader from "../components/TitleHeader";
 import QuestMapTask from "../components/QuestMapTask";
+import CenterSpinner from "../components/CenterSpinner";
+import { getFormattedTime } from "../utils/StringUtils";
 
 
 function PlayQuestPage() {
@@ -9,68 +11,66 @@ function PlayQuestPage() {
     const [tasksCompleted, setTasksCompleted] = useState(1);
     const [timeSpent, setTimeSpent] = useState(8*60);
 
-    // TODO: get quest info from server
-    const questData = {
-        "title": "Medieval Fantasy Quest",
-        "description": "Ви потрапили до світу середньовічного фентезі. Допоможіть місцевим жителям, щоб дізнатися, як знайти мудру людину, що здатна повернути Вас додому.",
-        "image": "https://2minutetabletop.com/wp-content/uploads/2020/02/Arvyre-Continent-Map-23x16-Base-Map.jpg",
-        "count_tasks": 3,
-        "time_limit": 20*60,
-        "difficulty": null,
-        "rating": null,
-        "status": null,
-        "author": null
+    const [isLoading, setIsLoading] = useState(false);
+
+    const [questData, setQuestData] = useState({});
+    const [questProgress, setQuestProgress] = useState({});
+    const [questTasks, setQuestTasks] = useState([]);
+
+    // TODO: fetch real data from the server
+    useEffect(() => {
+        fetchQuestData();
+        fetchQuestProgress();
+        fetchQuestTasks();
+    }, []);
+
+    function fetchQuestData() {
+        setIsLoading(true);
+        fetch('https://my-json-server.typicode.com/StackOverflowersUa/net-discovery-fake-json/quests')
+            .then((response) => response.json())
+            .then((data) => {
+                for (const quest of data) {
+                    if (quest.id != 0) continue;
+                    setQuestData(quest);
+                    setIsLoading(false);
+                    break;
+                }
+            })
+            .catch(error => console.error(error));
     }
 
-    // TODO: get player progress from server
-    const playerProgress = {
-        "time_spent": 8*60,
-        "task_statuses": {
-            1: "done",
-            2: "unfinished",
-            3: "unfinished"
-        }
+    function fetchQuestProgress() {
+        fetch('https://my-json-server.typicode.com/StackOverflowersUa/net-discovery-fake-json/quest_progress')
+            .then((response) => response.json())
+            .then((data) => {
+                setQuestProgress(data);
+
+                // Update tasks progress bar
+                let counter = 0;
+                for (const [_, value] of Object.entries(data.task_statuses)) {
+                    if (value !== "unfinished") counter++;
+                }
+                setTasksCompleted(counter);
+
+                // Update time progress bar
+                setTimeSpent(data.time_spent);
+            })
+            .catch(error => console.error(error));
     }
 
-    // TODO: get tasks from server
-    const questTasks = [
-        {
-            "task_number": 1,
-            "task_name": "Порт",
-            "position": [37, 30],
-            "question_text": "Злочинець вкрав сумку в перехожого. Спіймайте його, застосувавши це надзвичайне складне заклинання:\n2 + 2 =",
-            "options": ["1", "2", "22", "4"],
-            "correct_index": 3
-        },
-        {
-            "task_number": 2,
-            "task_name": "Міст",
-            "position": [57, 10],
-            "question_text": "Цим мостом не користуються вже багато років: ніхто не може пройти через " +
-                "кам'яне створіння, що тут оселилося. Можливо, воно пропустить Вас, якщо приголомшити його своїми знаннями?\n" +
-                "3 * 7 =",
-            "options": ["37", "21", "10"],
-            "correct_index": 1
-        },
-        {
-            "task_number": 3,
-            "task_name": "Фортеця",
-            "position": [78, 49],
-            "question_text": "Нарешті мудру людину, що володіє магією повернення додому, знайдено! Проте, " +
-                "чарівник не хоче допомагати аби-кому. Доведіть, що Ви гідні його часу:\n84 + 30 - 460 =",
-            "options": ["-256", "-356", "-346", "-348"],
-            "correct_index": 2
-        }
-    ]
+    function fetchQuestTasks() {
+        fetch('https://my-json-server.typicode.com/StackOverflowersUa/net-discovery-fake-json/quest_tasks')
+            .then((response) => response.json())
+            .then((data) => {
+                console.log(data);
+                setQuestTasks(data);
+            })
+            .catch(error => console.error(error));
+    }
 
     useEffect(() => {
         setTimeout(() => { setTimeSpent(timeSpent + 1); }, 1000);
     }, [timeSpent])
-
-    function getFormattedTime(seconds) {
-        let minutes = Math.floor(seconds / 60);
-        return `${minutes}:${seconds - minutes * 60}`;
-    }
 
     function handleTaskSubmit() {
         setTasksCompleted(tasksCompleted + 1);
@@ -81,6 +81,8 @@ function PlayQuestPage() {
             <TitleHeader title={questData.title} />
 
             <div className="content-container">
+                {isLoading && <CenterSpinner />}
+                {!isLoading && !!questTasks?.length && !!Object.entries(questProgress).length &&
                 <div className="d-flex">
                     <div className="play-quest-left-panel">
                         <h5>Description:</h5>
@@ -106,7 +108,7 @@ function PlayQuestPage() {
                                 className="progress-bar bg-warning"
                                 role="progressbar"
                                 style={{width: `${(questData.time_limit - timeSpent) / questData.time_limit * 100}%`}} >
-                                    {getFormattedTime(questData.time_limit - timeSpent)} min
+                                    {getFormattedTime(questData.time_limit - timeSpent, ":")} min
                             </div>
                         </div>
 
@@ -120,7 +122,7 @@ function PlayQuestPage() {
                     <div style={{position: 'relative'}}>
                         <img
                             className="quest-map"
-                            src={questData.image}
+                            src={questData.map_image}
                             alt="Quest map"/>
 
                         {questTasks.map((item) =>
@@ -131,12 +133,13 @@ function PlayQuestPage() {
                                 question_text={item.question_text}
                                 options={item.options}
                                 correct_index={item.correct_index}
-                                status={playerProgress.task_statuses[item.task_number]}
+                                status={questProgress.task_statuses[item.task_number]}
                                 handleSubmit={handleTaskSubmit}
                             />
                         )}
                     </div>
                 </div>
+                }
             </div>
         </>
     );
